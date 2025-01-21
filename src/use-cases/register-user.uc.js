@@ -1,11 +1,11 @@
-const UserRepository = require("../repository/user-repository");
+const UserRepository = require("../repository/user-repository-mysql");
 const userRepository = new UserRepository();
 
 class RegisterUserUseCase{
-    execute(data){
+    async execute(data){
         this.validateData(data);
-
-        userRepository.create(data);
+        const id = await userRepository.create(data);
+        return id;
     }
     validateData(data){
         if (data.name.length < 3){

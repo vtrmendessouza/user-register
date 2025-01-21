@@ -1,9 +1,14 @@
-const database = [];
-
 class UserRepository{
     create(user){
-        database.push(user);
-        console.log(database);
+        throw new Error("Método não implementado.");
+    }
+
+    update(user){
+        throw new Error("Método não implementado.");
+    }
+
+    remove(id){
+        throw new Error("Método não implementado.");
     }
 }
 
