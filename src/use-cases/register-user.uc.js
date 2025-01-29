@@ -2,12 +2,35 @@ const UserRepository = require("../repository/user-repository-mysql");
 const userRepository = new UserRepository();
 
 class RegisterUserUseCase{
+    
     async execute(data){
         this.validateData(data);
-        const id = await userRepository.create(data);
+        const formatedData = {
+            ...data,
+            data_nasc: this.formatRawDateToISO(data.data_nasc),
+            altura: data.altura.replace(",", "")
+        }
+        const id = await userRepository.create(formatedData);
         return id;
     }
+
+    //Date to ISO
+    formatRawDateToISO(rawDate) {
+        if(rawDate.includes("-")){
+            return rawDate;
+        }
+
+        const dataQuebrada = rawDate.split("/");
+      
+        const dia = dataQuebrada[0];
+        const mes = dataQuebrada[1];
+        const ano = dataQuebrada[2];
+      
+        return `${ano}-${mes}-${dia}`;
+    }
+
     validateData(data){
+       
         // Função para validar nome
         function validarNome(nome) {
             return nome.length >= 3;
@@ -137,95 +160,95 @@ class RegisterUserUseCase{
         // Função para validar todos os campos de uma vez
         function validarFormulario(user) {
             if (!validarNome(user.nome)) {
-            alert('Nome inválido');
+            throw new Error('Nome inválido');
             return false;
             }
             if (!validarIdade(user.idade)) {
-            alert('Idade inválida');
+            throw new Error('Idade inválida');
             return false;
             }
             if (!validarCPF(user.cpf)) {
-            alert('CPF inválido');
+            throw new Error('CPF inválido');
             return false;
             }
             if (!validarRG(user.rg)) {
-            alert('RG inválido');
+            throw new Error('RG inválido');
             return false;
             }
             if (!validarDataNascimento(user.data_nasc)) {
-            alert('Data de nascimento inválida');
+            throw new Error('Data de nascimento inválida');
             return false;
             }
             if (!validarSexo(user.sexo)) {
-            alert('Sexo inválido');
+            throw new Error('Sexo inválido');
             return false;
             }
             if (!validarSigno(user.signo)) {
-            alert('Signo inválido');
+            throw new Error('Signo inválido');
             return false;
             }
             if (!validarMae(user.mae)) {
-            alert('Nome da mãe inválido');
+            throw new Error('Nome da mãe inválido');
             return false;
             }
             if (!validarPai(user.pai)) {
-            alert('Nome do pai inválido');
+            throw new Error('Nome do pai inválido');
             return false;
             }
             if (!validarEmail(user.email)) {
-            alert('Email inválido');
+            throw new Error('Email inválido');
             return false;
             }
             if (!validarSenha(user.senha)) {
-            alert('Senha inválida');
+            throw new Error('Senha inválida');
             return false;
             }
             if (!validarCEP(user.cep)) {
-            alert('CEP inválido');
+            throw new Error('CEP inválido');
             return false;
             }
             if (!validarEndereco(user.endereco)) {
-            alert('Endereço inválido');
+            throw new Error('Endereço inválido');
             return false;
             }
             if (!validarNumero(user.numero)) {
-            alert('Número inválido');
+            throw new Error('Número inválido');
             return false;
             }
             if (!validarBairro(user.bairro)) {
-            alert('Bairro inválido');
+            throw new Error('Bairro inválido');
             return false;
             }
             if (!validarCidade(user.cidade)) {
-            alert('Cidade inválida');
+            throw new Error('Cidade inválida');
             return false;
             }
             if (!validarEstado(user.estado)) {
-            alert('Estado inválido');
+            throw new Error('Estado inválido');
             return false;
             }
             if (!validarTelefoneFixo(user.telefone_fixo)) {
-            alert('Telefone fixo inválido');
+            throw new Error('Telefone fixo inválido');
             return false;
             }
             if (!validarCelular(user.celular)) {
-            alert('Celular inválido');
+            throw new Error('Celular inválido');
             return false;
             }
             if (!validarAltura(user.altura)) {
-            alert('Altura inválida');
+            throw new Error('Altura inválida');
             return false;
             }
             if (!validarPeso(user.peso)) {
-            alert('Peso inválido');
+            throw new Error('Peso inválido');
             return false;
             }
             if (!validarTipoSanguineo(user.tipo_sanguineo)) {
-            alert('Tipo sanguíneo inválido');
+            throw new Error('Tipo sanguíneo inválido');
             return false;
             }
             if (!validarCor(user.cor)) {
-            alert('Cor inválida');
+            throw new Error('Cor inválida');
             return false;
             }
             

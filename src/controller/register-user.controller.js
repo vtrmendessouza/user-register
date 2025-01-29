@@ -5,6 +5,7 @@ class RegisterUserController{
     async handle(request, response){
         try{
             const data = request.body;
+            console.log(data);
             const id = await registerUserUseCase.execute(data);
             return response.status(201).json({
                 ok: true, id //id: 'const id'

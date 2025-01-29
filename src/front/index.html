@@ -10,10 +10,9 @@
 
     <div class="container">
         <h1>Cadastro de Usuário</h1>
-        <form id="formCadastro">
+        <!-- <form id="formCadastro" action="#"> -->
             <div id="errorMessages"></div>
 
-            <!-- Informações pessoais -->
             <fieldset>
                 <legend>Informações Pessoais</legend>
                 <label for="nome">Nome:</label>
@@ -35,14 +34,12 @@
                 <select id="sexo" name="sexo" required>
                     <option value="M">Masculino</option>
                     <option value="F">Feminino</option>
-                    <option value="Outro">Outro</option>
                 </select>
 
                 <label for="signo">Signo:</label>
                 <input type="text" id="signo" name="signo" required>
             </fieldset>
 
-            <!-- Família -->
             <fieldset>
                 <legend>Informações de Família</legend>
                 <label for="mae">Nome da Mãe:</label>
@@ -52,7 +49,6 @@
                 <input type="text" id="pai" name="pai" required>
             </fieldset>
 
-            <!-- Contato -->
             <fieldset>
                 <legend>Contato</legend>
                 <label for="email">E-mail:</label>
@@ -68,7 +64,6 @@
                 <input type="text" id="celular" name="celular" required>
             </fieldset>
 
-            <!-- Endereço -->
             <fieldset>
                 <legend>Endereço</legend>
                 <label for="cep">CEP:</label>
@@ -118,7 +113,6 @@
                 </select>
             </fieldset>
 
-            <!-- Saúde -->
             <fieldset>
                 <legend>Saúde</legend>
                 <label for="altura">Altura:</label>
@@ -128,14 +122,24 @@
                 <input type="number" step="0.1" id="peso" name="peso" required>
 
                 <label for="tipo_sanguineo">Tipo Sanguíneo:</label>
-                <input type="text" id="tipo_sanguineo" name="tipo_sanguineo" required>
+                <select id="tipo_sanguineo" name="tipo_sanguineo" required>
+                    <option value="">Selecione...</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
 
                 <label for="cor">Cor:</label>
                 <input type="text" id="cor" name="cor" required>
             </fieldset>
 
-            <button type="submit">Enviar</button>
-        </form>
+            <button id = "send">Enviar</button>
+        <!-- </form> -->
     </div>
 
     <script src="script.js"></script>
