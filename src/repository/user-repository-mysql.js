@@ -15,6 +15,12 @@ class UserRepositoryMysql extends UserRepository{
         const id = result[0];
         return id;
     }
+    async getAll(){
+        const result = await connection.query(`
+            select * from users
+        `);
+        return result;
+    }
 }
 
 module.exports = UserRepositoryMysql;
