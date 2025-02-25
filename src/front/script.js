@@ -1,8 +1,7 @@
-// Função para buscar o endereço do CEP
 async function fetchAddressFromCep() {
   const cep = document.querySelector("#cep").value.trim();
 
-  if (/^[0-9]+$/.test(cep)) { // Verifica se o CEP contém apenas números
+  if (/^[0-9]+$/.test(cep)) {
       try {
           const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
           if (!response.ok || !response.headers.get("Content-Type").includes("application/json")) {
@@ -25,18 +24,15 @@ async function fetchAddressFromCep() {
   }
 }
 
-// Função para preencher os campos de endereço no formulário
 function preencherCamposEndereco(data) {
-  document.querySelector("#rua").value = data.logradouro || "";
+  document.querySelector("#endereco").value = data.logradouro || "";
   document.querySelector("#bairro").value = data.bairro || "";
   document.querySelector("#cidade").value = data.localidade || "";
   document.querySelector("#estado").value = data.uf || "";
 }
 
-// Adiciona um ouvinte de evento para quando o CEP for alterado
 document.querySelector("#cep").addEventListener("blur", fetchAddressFromCep);
 
-// Ouvinte de evento para o envio do formulário
 document.querySelector("#send").addEventListener("click", () => {
 const options = {
   method: 'POST',
@@ -54,7 +50,7 @@ const options = {
     email: document.querySelector("#email").value,
     senha: document.querySelector("#senha").value,
     cep: document.querySelector("#cep").value,
-    endereco: document.querySelector("#rua").value, // Alterado para 'rua'
+    endereco: document.querySelector("#endereco").value,
     numero: document.querySelector("#numero").value,
     bairro: document.querySelector("#bairro").value,
     cidade: document.querySelector("#cidade").value,
