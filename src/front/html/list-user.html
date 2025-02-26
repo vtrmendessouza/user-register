@@ -1,13 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../style/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Registros</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    
+  <h1>Consulta de Registros</h1>
+  <p>Clique no botão abaixo para consultar todos os registros de usuários:</p>
+
+  <div>
+    <button id="consultar">Consultar Todos os Registros</button>
+  </div>
+
+  <div id="resultadoConsulta" style="display: none;">
+    <h2>Dados Encontrados</h2>
+    <table id="tabelaUsuarios">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>CPF</th>
+          <th>RG</th>
+          <th>Data de Nascimento</th>
+          <th>Sexo</th>
+          <th>Signo</th>
+          <th>Nome da Mãe</th>
+          <th>Nome do Pai</th>
+          <th>E-mail</th>
+          <th>Senha</th>
+          <th>Telefone Fixo</th>
+          <th>Celular</th>
+          <th>CEP</th>
+          <th>Endereço</th>
+          <th>Número</th>
+          <th>Bairro</th>
+          <th>Cidade</th>
+          <th>Estado</th>
+          <th>Altura</th>
+          <th>Peso</th>
+          <th>Tipo Sanguíneo</th>
+          <th>Cor</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div>
+    <button id="voltarMenu">Voltar ao Menu Principal</button>
+  </div>
+
+  <script src="../script/list-user.js"></script>
 </body>
-    <script src="../script/list-user.js"></script>
 </html>
