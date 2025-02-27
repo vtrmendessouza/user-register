@@ -1,6 +1,6 @@
 async function consultarTodosDados() {
     try {
-      const response = await fetch("http://localhost:3000/users");
+      const response = await fetch(".../repository/user-repository-mysql");
   
       if (!response.ok || !response.headers.get("Content-Type").includes("application/json")) {
         throw new Error("Erro ao consultar os dados");
@@ -18,13 +18,13 @@ async function consultarTodosDados() {
       console.error("Erro ao buscar os dados:", error);
       alert("Não foi possível consultar os dados. Tente novamente mais tarde.");
     }
-  }
+}
   
-  function preencherTabelaUsuarios(usuarios) {
-    const tabelaCorpo = document.querySelector("#tabelaUsuarios tbody");
+  function preencherTabelaUsuarios(users) {
+    const tabelaCorpo = document.querySelector("#tabelaUsers tbody");
     tabelaCorpo.innerHTML = "";
   
-    usuarios.forEach(user => {
+    users.forEach(user => {
       const linha = document.createElement("tr");
       linha.innerHTML = `
         <td>${user.nome}</td>
@@ -54,11 +54,11 @@ async function consultarTodosDados() {
       tabelaCorpo.appendChild(linha);
     });
   
-    document.querySelector("#resultadoConsulta").style.display = "block";  // Exibe a tabela
-  }
+  document.querySelector("#resultadoConsulta").style.display = "block";  // Exibe a tabela
+}
   
-  document.querySelector("#consultar").addEventListener("click", consultarTodosDados);
-  
-  document.querySelector("#voltarMenu").addEventListener("click", function() {
-    window.location.href = "../index.html";
-  });
+document.querySelector("#consultar").addEventListener("click", consultarTodosDados);
+
+document.querySelector("#voltarMenu").addEventListener("click", function() {
+  window.location.href = "../index.html";
+});
